@@ -6,9 +6,7 @@ public class FindDemo {
 
     public static void main(String[] args) {
         FindDemo fd = new FindDemo();
-        int[] a = {2,2,2,1,1,2,2,2};
-        System.out.println(fd.minNumberInRotateArray(a) );
-        assert fd.minNumberInRotateArray(a)==1;
+        System.out.println(fd.numberOfOne(678) );
     }
 
 
@@ -76,7 +74,7 @@ public class FindDemo {
                 return array[left];
             }
 
-            if (array[mid] > array[left]) {
+            if (array[mid] >= array[left]) {
                 left = mid;
             } else {
                 right = mid;
@@ -85,6 +83,43 @@ public class FindDemo {
                 return array[right];
             }
         }
+    }
+
+    /**
+     * 描述：大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。
+     *
+     * url：https://www.nowcoder.com/practice/c6c7742f5ba7442aada113136ddea0c3?tpId=13&tqId=11160&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking
+     * @param n
+     * @return
+     */
+    public int Fibonacci(int n) {
+        if(n<=0)
+            return 0;
+        if(n==1)
+            return 1;
+        int a=0,b=1;
+        int fn=0;
+        for(int i=2;i<=n;i++){
+            fn=a+b;
+            a=b;
+            b=fn;
+        }
+        return fn;
+    }
+
+
+    /**
+     * 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
+     * @param n
+     * @return
+     */
+    public int numberOfOne(int n){
+        int result=0;
+        while(n!=0){
+            n=(n-1)&n;
+            result++;
+        }
+        return result;
     }
 
 }
